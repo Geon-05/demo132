@@ -11,11 +11,13 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/book/list.css" />
-    <script src="/js/book/list.js"></script>
   </head>
   <body>
     <header th:insert="~{/common/templatesBuild::navi}"></header>
-    <main th:with="list=${map.list}, pageDto=${map.pageDto}">
+    <main
+      th:with="list=${map.list}, pageDto=${map.pageDto}"
+      th:if="${map!=null}"
+    >
       <!-- 타이틀 -->
       <h2>도서목록</h2>
       <!-- 검색 -->
@@ -76,7 +78,7 @@
           </button>
         </div>
       </form>
-      
+
       <hr />
 
       <!-- 도서목록 -->

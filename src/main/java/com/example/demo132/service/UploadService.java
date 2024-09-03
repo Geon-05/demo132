@@ -57,10 +57,8 @@ public class UploadService {
     uploadDto.setPath(path);
     uploadDto.setIdx(idx + 1);
     uploadDto.setFile_type(file.getContentType());
-    System.out.println("테스트테스트!!!!-------------------------------------------");
     String dir = "d:/upload/" + path + File.separator;
     makeDir(dir);
-    System.out.println("테스트테스트!!!!-------------------------------------------");
 
     return uploadDto;
   }

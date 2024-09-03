@@ -25,12 +25,12 @@ public class LoginController {
   LoginService service;
 
   @GetMapping("/login/login")
-  public String getMethodName() {
+  public String login() {
       return "/login/login";
   }
   
   @PostMapping("/login/loginAction")
-  public String postMethodName(
+  public String loginAction(
     @RequestParam(name = "chkIdSave", required = false) String chkIdSave
     , HttpServletRequest request
     , HttpServletResponse response
@@ -62,5 +62,11 @@ public class LoginController {
       return "common/msg";
     }
   }
+
+  @GetMapping("/login/loginRegister")
+  public String getMethodName() {
+      return "/login/register";
+  }
+  
   
 }

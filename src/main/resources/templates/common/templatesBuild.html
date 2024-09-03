@@ -48,7 +48,7 @@
 
     <div th:fragment="pagenation">
       <!-- 페이지네이션 -->
-      <th:block th:if="${map!=null}">
+      <th:block>
         <nav aria-label="...">
           <ul class="pagination justify-content-center">
             <th:block th:if="${map.pageDto.prev}">
@@ -60,9 +60,6 @@
                 >
               </li>
             </th:block>
-
-            <!-- #numbers.sequence() : 숫자배열을 만들어주는 함수
-       생성된 숫자 배열로 부터 하나씩 꺼내서 변수에 저장 하고 반복  -->
             <th:block
               th:each="index:${#numbers.sequence(map.pageDto.startPage,map.pageDto.endPage)}"
             >
