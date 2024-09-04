@@ -8,5 +8,7 @@ import com.example.demo132.dto.MemberDto;
 public interface LoginMapper {
   public MemberDto login(MemberDto member);
 
-  public MemberDto insertUser(MemberDto member);
+  public int insertUser(MemberDto member);
+
+  public int selectCheckId(String id);
 }

@@ -24,4 +24,14 @@ public class LoginService {
       return null;
     }
   }
+  
+  public int insertUeser(MemberDto member){
+    String encodePw = encoder.encode(member.getPw());
+    member.setPw(encodePw);
+    return mapper.insertUser(member);
+  }
+
+  public int selectCheckId(String id) {
+    return mapper.selectCheckId(id);
+  }
 }

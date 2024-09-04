@@ -4,20 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원가입</title>
-    <!-- Custom fonts for this template-->
-    <link
-      href="/vendor/fontawesome-free/css/all.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet"
-    />
-
-    <!-- Custom styles for this template-->
+    <div th:insert="~{/common/templatesBuild::bootstrap_css}"></div>
     <link href="/css/sb-admin-2.min.css" rel="stylesheet" />
-    <script src="/js/register.js"></script>
+    
     <style>
       .info_box {
         height: 50px;
@@ -28,7 +17,6 @@
     <div class="container">
       <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
-          <!-- Nested Row within Card Body -->
           <div class="row">
             <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
             <div class="col-lg-7">
@@ -42,7 +30,6 @@
                   method="post"
                   action="/login/registerAction"
                 >
-                  <!-- 아이디입력 -->
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                       <input
@@ -53,7 +40,6 @@
                         placeholder="아이디"
                       />
                     </div>
-                    <!-- 아이디 중복체크 -->
                     <div class="col-sm-6">
                       <button
                         type="button"
@@ -64,7 +50,6 @@
                       </button>
                     </div>
                   </div>
-                  <!-- 이름 -->
                   <div class="form-group">
                     <input
                       type="text"
@@ -74,7 +59,6 @@
                       placeholder="이름"
                     />
                   </div>
-                  <!-- 비밀번호 -->
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                       <input
@@ -94,10 +78,54 @@
                       />
                     </div>
                   </div>
-                  <!-- info - box -->
                   <div class="info_box" id="pw_info"></div>
 
-                  <!-- 회원가입 버튼 -->
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="chk_gender"
+                        id="chk_gender_man"
+                        value="M"
+                      />
+                      <label class="form-check-label" for="chk_gender_man">
+                        남성
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="chk_gender"
+                        id="chk_gender_woman"
+                        value="W"
+                        checked
+                      />
+                      <label class="form-check-label" for="chk_gender_woman">
+                        여성
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-user"
+                      id="input_address"
+                      name="addr"
+                      placeholder="주소 (선택)"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control form-control-user"
+                      id="input_phone"
+                      name="phone"
+                      placeholder="전화번호 (선택)"
+                    />
+                  </div>
+
                   <a
                     href="javascript:fn_validation()"
                     class="btn btn-primary btn-user btn-block"
@@ -127,7 +155,7 @@
                 </div>
                 <div class="text-center">
                   <a class="small" href="/member/login"
-                    >Already have an account? Login!</a
+                    >로그인 페이지로!</a
                   >
                 </div>
               </div>
@@ -136,6 +164,10 @@
         </div>
       </div>
     </div>
+
+    <!-- 회원가입 스크립트 -->
+    <script src="/js/login/register.js"></script>
+    
     <!-- Bootstrap core JavaScript-->
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

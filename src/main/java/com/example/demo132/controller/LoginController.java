@@ -68,5 +68,23 @@ public class LoginController {
       return "/login/register";
   }
   
+  @PostMapping("/login/loginRegisterAction")
+  public String postMethodName(
+    MemberDto member
+    , Model model
+  ) {
+      int res = service.insertUeser(member);
+
+      if (res > 0) {
+        model.addAttribute("msg", "로그인 후 이용이 가능합니다.");
+        model.addAttribute("url", "/login/login");
+        return "/common/msg";
+      } else {
+        model.addAttribute(("msg"), "입력중 예외가 발생하였습니다.\n관리자에게 문의하세요.");
+        return "/common/msg";
+      }
+      
+  }
+  
   
 }
