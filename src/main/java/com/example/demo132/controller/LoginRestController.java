@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo132.service.LoginService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -22,7 +21,7 @@ public class LoginRestController {
     Map<String, Object> map = new HashMap<>();
     
     int res = service.selectCheckId(id);
-    map.put("restest", res);
+    map.put("id_res", res);
     
     return map;
   }

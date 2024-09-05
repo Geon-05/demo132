@@ -1,4 +1,6 @@
 let checkId = false;
+let checkPw = false;
+
 check_id();
 check_password();
 
@@ -10,8 +12,10 @@ function check_password() {
   pw_check.addEventListener("keyup", function () {
     if (input_pw.value != pw_check.value) {
       pw_info.innerHTML = "비밀번호가 다릅니다.";
+      checkPw = false;
     } else if (input_pw.value == pw_check.value) {
       pw_info.innerHTML = "비밀번호 체크!";
+      checkPw = true;
     }
   });
 }
@@ -38,21 +42,37 @@ function fn_validation() {
     let res = false;
     if (input_address.value == "" && input_phone.value == "") {
       res = confirm("주소와 전화번호를 기입하지 않습니까?");
+      if (res) {
+        input_address.value = null;
+        input_phone.value = null;
+      }
     } else if (input_address.value == "") {
       res = confirm("주소를 기입하지 않습니까?");
+      if (res) {
+        input_address.value = null;
+      }
     } else {
       res = confirm("전화번호를 기입하지 않습니까?");
+      if (res) {
+        input_phone.value = null;
+      }
     }
     if (!res) {
       return;
     }
-  } else if (!regexp_pw.test(input_pw.value)) {
+  }
+  
+  if (!regexp_pw.test(input_pw.value)) {
     alert(
       "비밀번호는 영문자, 숫자와 특수문자를 조합하여주세요 \n 8~12자리를 입력하세요."
     );
     return;
-  } else if (checkId) {
+  } else if (checkId == true && checkPw == true) {
+    alert("아이디가 등록됨 확인!");
     registerForm.submit();
+  } else {
+    alert("알수없는 오류가 발생하였습니다. \n 관리자에게 문의하세요.");
+    return;
   }
 }
 
