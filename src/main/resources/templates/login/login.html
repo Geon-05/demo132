@@ -17,6 +17,8 @@
       <form action="/login/loginAction" method="post" name="form_login">
         <div class="loginBox">
           <!-- id -->
+          <div th:text="${param.msg}"></div>
+          <hr>
           <div class="input-group login-box">
             <span class="input-group-text login-width">id</span>
             <input type="text" class="form-control" id="input_id" name="id" />
