@@ -65,7 +65,7 @@
         <nav aria-label="...">
           <ul class="pagination justify-content-center">
             <th:block th:if="${map.pageDto.prev}">
-              <li class="page-item disabled">
+              <li class="page-item">
                 <a
                   class="page-link"
                   th:onclick="go([[${map.pageDto.startPage-1}]])"
@@ -89,7 +89,7 @@
               <li class="page-item">
                 <a
                   class="page-link"
-                  th:onclick="go([[${map.pageDto.startPage+1}]])"
+                  th:onclick="go([[${map.pageDto.endPage+1}]])"
                   >▶</a
                 >
               </li>
@@ -101,6 +101,8 @@
       <th:block th:unless="${map!=null}">
         map is null
       </th:block>
+
+      <script src="/js/common.js"></script>
     </div>
   </body>
 </html>
