@@ -30,4 +30,8 @@ public class BookService {
 
     return map;
   }
+
+  public BookDto selectBookDetail(BookDto book){
+    return mapper.selectBookDetail(book);
+  }
 }

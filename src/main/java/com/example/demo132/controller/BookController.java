@@ -44,7 +44,12 @@ public class BookController {
   }
 
   @GetMapping("/book/bookDetail")
-  public String detail() {
+  public String detail(
+    BookDto book
+    , Model model
+    ) {
+      BookDto selectBook = service.selectBookDetail(book);
+      model.addAttribute("book", selectBook);
       return "/book/detail";
   }
   

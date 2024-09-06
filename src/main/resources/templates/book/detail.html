@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <div th:insert="~{/common/templatesBuild::bootstrap_css}"></div>
-</head>
-<body>
-  <h1>도서디테일테스트</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>탬플릿</title>
+  </head>
+  <body>
+    <header th:insert="~{/common/templatesBuild::navi}"></header>
+    <main>
+      <main>
+        <h3>도서상세</h3>
+        <th:block th:if="${book != null}">
+          <table>
+            <tr>
+              <td rowspan="5">
+                <th:block th:unless="${#lists.isEmpty(imgFileList)}">
+                  <img th:src="@{/download(fileName='/' + ${imgFileList[0].path} + '/' + ${imgFileList[0].sname}, oname=${imgFileList[0].oname})}" width="200px" height="150px" alt="첨부파일">
+                </th:block>
+              </td>
+              <th>도서 번호</th>
+              <td th:text="${book.book_no}"></td>
+            </tr>
+            <tr>
+              <th>도서 제목</th>
+              <td th:text="${book.title}"></td>
+            </tr>
+            <tr>
+              <th>도서 작가</th>
+              <td th:text="${book.author}"></td>
+            </tr>
+            <tr>
+              <th>가격</th>
+              <td th:text="${book.price}"></td>
+            </tr>
+            <tr>
+              <th>출판사</th>
+              <td th:text="${book.regdate}"></td>
+            </tr>
+            <th:block th:if="${imgFileList != null}">
+            <th:block th:each="file:${imgFileList}">
+              <tr>
+                <th>첨부파일</th>
+                <td><a th:href="@{/download(fileName='/' + ${file.path} + '/' + ${file.sname}, oname=${file.oname})}" th:text="${file.oname}"></a></td>
+              </tr>
+              <tr>
+                <th></th>
+                <td><img th:src="@{/download(fileName='/' + ${file.path} + '/' + ${file.sname}, oname=${file.oname})}" width="200px" height="150px" alt="첨부파일"></td>
+              </tr>
+            </th:block>
+          </th:block>
+          </table>
+        </th:block>
+  
+        <hr>
+  
+        <button class="btn btn-primary">수정</button>
+        <button class="btn btn-danger">삭제</button>
+        <button class="btn btn-info">리스트</button>
+    </main>
+    <script src="/js/book/detail.js"></script>
+    <footer th:insert="~{/common/templatesBuild::footer}"></footer>
+  </body>
 </html>

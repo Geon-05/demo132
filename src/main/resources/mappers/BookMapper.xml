@@ -48,4 +48,10 @@
       </if>
     </if>
   </select>    
+
+  <!-- selectBookDetail --> 
+
+  <select id="selectBookDetail" resultType="BookDto">
+    select * from tb_book where book_no=#{book_no}
+  </select>
 </mapper>
