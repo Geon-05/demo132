@@ -48,7 +48,7 @@ public class UploadService {
     }
   }
 
-  private UploadDto makeUploadDto(
+  public UploadDto makeUploadDto(
       MultipartFile file, String path, int idx) {
     UploadDto uploadDto = new UploadDto();
 
@@ -63,10 +63,14 @@ public class UploadService {
     return uploadDto;
   }
 
-  private void makeDir(String dir) {
+  public void makeDir(String dir) {
     File uploadDir = new File(dir);
     if (!uploadDir.exists()) {
       uploadDir.mkdirs();
     }
+  }
+
+  public List<UploadDto> selectUploadList(int img_f_no) {
+    return mapper.selectUpload(img_f_no);
   }
 }

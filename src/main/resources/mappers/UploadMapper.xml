@@ -10,4 +10,10 @@
     INSERT INTO TB_UPLOAD_FILE (F_NO, IDX, ONAME, SNAME, PATH, FILE_TYPE)
     VALUES(seq_upload_file.nextval,#{idx},#{oname},#{sname},#{path},#{file_type})
   </insert>
+
+  <!-- selectUpload --> 
+
+  <select id="selectUpload" resultType="UploadDto">
+    select * from tb_upload_file where f_no=#{f_no}
+  </select>
 </mapper>

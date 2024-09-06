@@ -12,4 +12,5 @@ public class BookDto {
   private String rentyn;
   private String delyn;
   private String regdate;
+  private int img_f_no;
 }
