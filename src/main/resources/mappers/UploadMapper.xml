@@ -4,22 +4,22 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo132.mapper.UploadMapper">
 
-  <!-- insertUpload --> 
-
-  <insert id="insertUpload">
-    INSERT INTO TB_UPLOAD_FILE (F_NO, IDX, ONAME, SNAME, PATH, FILE_TYPE)
-    VALUES(seq_upload_file.nextval,#{idx},#{oname},#{sname},#{path},#{file_type})
-  </insert>
-
   <!-- selectUpload --> 
 
-  <select id="selectUpload" resultType="UploadDto">
-    select * from tb_upload_file where f_no=#{f_no}
-  </select>
+  <insert id="insertUploadMulti">
+    INSERT INTO TB_UPLOAD_FILE (F_NO, IDX, ONAME, SNAME, PATH, FILE_TYPE)
+    VALUES(#{f_no},#{idx},#{oname},#{sname},#{path},#{file_type})
+  </insert>
 
   <!-- selectSeqUploadFile --> 
 
   <select id="selectSeqUploadFile">
     select seq_upload_file.nextval from dual
+  </select>
+
+  <!-- selectUpload --> 
+
+  <select id="selectUpload" resultType="UploadDto">
+    select * from tb_upload_file where f_no=#{f_no}
   </select>
 </mapper>

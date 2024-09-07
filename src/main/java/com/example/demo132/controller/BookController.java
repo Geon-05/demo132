@@ -14,15 +14,16 @@ import com.example.demo132.dto.UploadDto;
 import com.example.demo132.service.BookService;
 import com.example.demo132.service.UploadService;
 
-import org.springframework.web.bind.annotation.RequestParam;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
 @Controller
+@Slf4j
 public class BookController {
   @Autowired
   BookService service;
@@ -52,7 +53,7 @@ public class BookController {
     ) {
       if (files != null && files.size() > 0) {
         if (!"".equals(files.get(0).getOriginalFilename())) {
-          int f_no = uploadService.insertUploadMulti(files, "book");;
+          int f_no = uploadService.insertUploadMulti(files, "book");
           book.setImg_f_no(f_no);
         }
       }

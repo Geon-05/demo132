@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 
 import com.example.demo132.service.UploadService;
@@ -32,19 +31,13 @@ public class UploadController {
     return "/upload";
   }
 
-  @PostMapping("/uploadAction")
-  public String postMethodName(
-      @RequestPart(name = "file", required = false) MultipartFile file, Model model) {
-    service.insertUpload(file, "file");
-    return "/upload";
-  }
-
   @PostMapping("/uploadActionMultiple")
   public String postMethodName(
-      @RequestPart(name = "uploadFiles", required = false) List<MultipartFile> uploadFiles) {
+      @RequestPart(name = "uploadFiles", required = false) List<MultipartFile> uploadFiles
+      ) throws IllegalStateException, IOException {
     service.insertUploadMulti(uploadFiles, "multiple");
 
-    return "/upload";
+    return "redirect:/upload";
   }
 
   @GetMapping("/download")

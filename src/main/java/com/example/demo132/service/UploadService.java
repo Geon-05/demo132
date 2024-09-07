@@ -18,7 +18,7 @@ public class UploadService {
 
   public int insertUploadMulti(
       List<MultipartFile> uploadFiles, String path) {
-        int f_no = mapper.selectSeqUploadFile();
+    int f_no = mapper.selectSeqUploadFile();
 
     for (int i = 0; i < uploadFiles.size(); i++) {
       MultipartFile file = uploadFiles.get(i);
@@ -27,7 +27,7 @@ public class UploadService {
       try {
         File uploadFile = new File("d:/upload/" + path + File.separator + uploadDto.getSname());
         file.transferTo(uploadFile);
-        mapper.insertUpload(uploadDto);
+        mapper.insertUploadMulti(uploadDto);
       } catch (IllegalStateException e) {
         e.printStackTrace();
       } catch (IOException e) {
@@ -35,22 +35,6 @@ public class UploadService {
       }
     }
     return f_no;
-  }
-
-  public void insertUpload(MultipartFile uploadFiles, String path) {
-    int f_no = mapper.selectSeqUploadFile();
-
-    UploadDto uploadDto = makeUploadDto(uploadFiles, path, 0, f_no);
-
-    try {
-      File uploadFile = new File("d:/upload/" + path + File.separator + uploadDto.getSname());
-      uploadFiles.transferTo(uploadFile);
-      mapper.insertUpload(uploadDto);
-    } catch (IllegalStateException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
   }
 
   public UploadDto makeUploadDto(
@@ -76,7 +60,7 @@ public class UploadService {
       uploadDir.mkdirs();
     }
   }
-
+  
   public List<UploadDto> selectUploadList(int img_f_no) {
     return mapper.selectUpload(img_f_no);
   }

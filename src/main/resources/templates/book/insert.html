@@ -10,9 +10,13 @@
     <header th:insert="~{/common/templatesBuild::navi}"></header>
     <main>
       <div class="addBox">
-        <form name="insertForm" action="/book/bookInsertAction" method="post">
-          <h1>도서등록</h1>
-          <!-- 도서정보기입란 -->
+        <h1>도서등록</h1>
+        <form
+          name="insertForm"
+          action="/book/bookInsertAction"
+          method="post"
+          enctype="multipart/form-data"
+        >
           <div class="input-group mb-3">
             <span class="input-group-text infoBox">타이틀</span>
             <input
@@ -61,7 +65,7 @@
             />
           </div>
           <div>
-            * jpg, gif, png 파일만 업로드 가능 합니다.<br>
+            * jpg, gif, png 파일만 업로드 가능 합니다.<br />
             * 파일의 최대크기는 5MB입니다.
           </div>
           <button type="button" class="btn btn-primary" id="btn_addBook">

@@ -8,9 +8,9 @@ import com.example.demo132.dto.UploadDto;
 
 @Mapper
 public interface UploadMapper {
-  public int insertUpload(UploadDto uploadDto);
-
-  public List<UploadDto> selectUpload(int f_no);
+  public int insertUploadMulti(UploadDto uploadDto);
 
   public int selectSeqUploadFile();
+  
+  public List<UploadDto> selectUpload(int f_no);
 }
