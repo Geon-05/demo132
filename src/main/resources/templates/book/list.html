@@ -12,7 +12,6 @@
       th:with="list=${map.list}, pageDto=${map.pageDto}"
       th:if="${map!=null}"
     >
-      <!-- 타이틀 -->
       <h2>도서목록</h2>
       <form name="searchForm" action="/book/bookList" method="get" id="searchForm">
         <input
@@ -29,7 +28,6 @@
         />
       </form>
 
-      <!-- 검색필드-->
       <form name="searchForm" action="/book/bookList" method="get">
         <div class="input-group" id="searchBox">
           <select class="form-select" name="searchField">
@@ -54,7 +52,6 @@
             name="searchWord"
             th:value="${param.searchWord}"
           />
-          <!-- 검색 버튼 -->
           <button class="btn btn-outline-secondary" type="submit">검색</button>
           <button
             class="btn btn-outline-secondary"

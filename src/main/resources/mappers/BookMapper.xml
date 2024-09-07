@@ -52,7 +52,9 @@
   <!-- selectBookDetail --> 
 
   <select id="selectBookDetail" resultType="BookDto">
-    select * from tb_book where book_no=#{book_no}
+    select *
+    from tb_book
+    where book_no=#{book_no}
   </select>
 
   <!-- insertBook --> 
@@ -65,6 +67,15 @@
   <!-- deleteBook --> 
 
   <delete id="deleteBook">
-    delete from tb_book where book_no = #{book_no}
+    delete from tb_book 
+    where book_no = #{book_no}
   </delete>
+
+  <!-- updateBook --> 
+
+  <update id="updateBook">
+    update tb_book
+    set title = #{title}, author = #{author}, price = #{price}
+    where book_no=#{book_no}
+  </update>
 </mapper>

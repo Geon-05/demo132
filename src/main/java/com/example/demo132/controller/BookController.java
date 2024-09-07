@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 @Slf4j
@@ -90,7 +92,6 @@ public class BookController {
     } else {
       model.addAttribute("msg", "삭제 중 예외가 발생 하였습니다.\n관리자에게 문의해주세요");
     }
-
     return "/common/msg";
   }
 
@@ -99,10 +100,19 @@ public class BookController {
       BookDto book, Model model) {
     BookDto selectBook = service.selectBookDetail(book);
     model.addAttribute("book", selectBook);
-
-    List<UploadDto> imgFileList = uploadService.selectUploadList(selectBook.getImg_f_no());
-    model.addAttribute("imgFileList", imgFileList);
     return "/book/update";
   }
 
+  @PostMapping("/book/bookUpdateAction")
+  public String postMethodName(
+    BookDto book, Model model) {
+  int res = service.updateBook(book);
+  if (res > 0) {
+    return "redirect:/book/bookList";
+  } else {
+    model.addAttribute("msg", "도서수정 중 문제가 발생하였습니다.\n관리자에게 문의하세요.");
+    return "/common/msg";
+  }
+}
+  
 }

@@ -17,7 +17,7 @@ public class BookService {
   @Autowired
   BookMapper mapper;
 
-  public Map<String, Object> selectBookList(SearchDto searchDto){
+  public Map<String, Object> selectBookList(SearchDto searchDto) {
     Map<String, Object> map = new HashMap<>();
 
     List<BookDto> list = mapper.selectBookList(searchDto);
@@ -31,15 +31,19 @@ public class BookService {
     return map;
   }
 
-  public BookDto selectBookDetail(BookDto book){
+  public BookDto selectBookDetail(BookDto book) {
     return mapper.selectBookDetail(book);
   }
 
-  public int insertBook(BookDto book){
+  public int insertBook(BookDto book) {
     return mapper.insertBook(book);
   }
 
   public int deleteBook(String book_no) {
     return mapper.deleteBook(book_no);
-}
+  }
+
+  public int updateBook(BookDto book){
+    return mapper.updateBook(book);
+  }
 }
