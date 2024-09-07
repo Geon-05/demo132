@@ -38,4 +38,8 @@ public class BookService {
   public int insertBook(BookDto book){
     return mapper.insertBook(book);
   }
+
+  public int deleteBook(String book_no) {
+    return mapper.deleteBook(book_no);
+}
 }
