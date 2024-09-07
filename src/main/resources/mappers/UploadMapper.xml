@@ -16,4 +16,10 @@
   <select id="selectUpload" resultType="UploadDto">
     select * from tb_upload_file where f_no=#{f_no}
   </select>
+
+  <!-- selectSeqUploadFile --> 
+
+  <select id="selectSeqUploadFile">
+    select seq_upload_file.nextval from dual
+  </select>
 </mapper>

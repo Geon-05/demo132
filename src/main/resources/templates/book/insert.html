@@ -3,11 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <div th:insert="~{/common/templatesBuild::bootstrap_css}"></div>
-    
+    <title>도서등록</title>
     <link rel="stylesheet" href="/css/book/insert.css" />
-    <script src="/js/book/insert.js"></script>
   </head>
   <body>
     <header th:insert="~{/common/templatesBuild::navi}"></header>
@@ -53,18 +50,28 @@
               name="pub_no"
             />
           </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text infoBox">첨부파일</span>
+            <input
+              type="file"
+              class="form-control"
+              name="file"
+              id="file"
+              multiple
+            />
+          </div>
+          <div>
+            * jpg, gif, png 파일만 업로드 가능 합니다.<br>
+            * 파일의 최대크기는 5MB입니다.
+          </div>
           <button type="button" class="btn btn-primary" id="btn_addBook">
             등록
           </button>
-          <button type="button" class="btn btn-danger">초기화</button>
+          <button type="reset" class="btn btn-danger">초기화</button>
         </form>
       </div>
     </main>
     <footer th:insert="~{/common/templatesBuild::footer}"></footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+    <script src="/js/book/insert.js"></script>
   </body>
 </html>

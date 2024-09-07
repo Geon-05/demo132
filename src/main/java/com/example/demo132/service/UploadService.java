@@ -16,11 +16,13 @@ public class UploadService {
   @Autowired
   UploadMapper mapper;
 
-  public void insertUploadMulti(
+  public int insertUploadMulti(
       List<MultipartFile> uploadFiles, String path) {
+        int f_no = mapper.selectSeqUploadFile();
+
     for (int i = 0; i < uploadFiles.size(); i++) {
       MultipartFile file = uploadFiles.get(i);
-      UploadDto uploadDto = makeUploadDto(file, path, i);
+      UploadDto uploadDto = makeUploadDto(file, path, i, f_no);
 
       try {
         File uploadFile = new File("d:/upload/" + path + File.separator + uploadDto.getSname());
@@ -32,10 +34,13 @@ public class UploadService {
         e.printStackTrace();
       }
     }
+    return f_no;
   }
 
   public void insertUpload(MultipartFile uploadFiles, String path) {
-    UploadDto uploadDto = makeUploadDto(uploadFiles, path, 0);
+    int f_no = mapper.selectSeqUploadFile();
+
+    UploadDto uploadDto = makeUploadDto(uploadFiles, path, 0, f_no);
 
     try {
       File uploadFile = new File("d:/upload/" + path + File.separator + uploadDto.getSname());
@@ -49,7 +54,7 @@ public class UploadService {
   }
 
   public UploadDto makeUploadDto(
-      MultipartFile file, String path, int idx) {
+      MultipartFile file, String path, int idx, int f_no) {
     UploadDto uploadDto = new UploadDto();
 
     uploadDto.setOname(file.getOriginalFilename());
@@ -57,6 +62,8 @@ public class UploadService {
     uploadDto.setPath(path);
     uploadDto.setIdx(idx + 1);
     uploadDto.setFile_type(file.getContentType());
+    uploadDto.setF_no(f_no);
+
     String dir = "d:/upload/" + path + File.separator;
     makeDir(dir);
 

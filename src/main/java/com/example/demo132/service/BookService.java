@@ -34,4 +34,8 @@ public class BookService {
   public BookDto selectBookDetail(BookDto book){
     return mapper.selectBookDetail(book);
   }
+
+  public int insertBook(BookDto book){
+    return mapper.insertBook(book);
+  }
 }

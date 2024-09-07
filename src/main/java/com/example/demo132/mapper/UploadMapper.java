@@ -11,4 +11,6 @@ public interface UploadMapper {
   public int insertUpload(UploadDto uploadDto);
 
   public List<UploadDto> selectUpload(int f_no);
+
+  public int selectSeqUploadFile();
 }

@@ -15,6 +15,8 @@ import com.example.demo132.service.BookService;
 import com.example.demo132.service.UploadService;
 
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -44,10 +46,24 @@ public class BookController {
   
   @PostMapping("/book/bookInsertAction")
   public String insertAction(
-    BookDto book
+    @RequestPart(name = "file", required = false) List<MultipartFile> files
+    , BookDto book
     , Model model
     ) {
-    return "";
+      if (files != null && files.size() > 0) {
+        if (!"".equals(files.get(0).getOriginalFilename())) {
+          int f_no = uploadService.insertUploadMulti(files, "book");;
+          book.setImg_f_no(f_no);
+        }
+      }
+
+      int res = service.insertBook(book);
+      if (res > 0) {
+        return "redirect:/book/bookList";
+      } else {
+        model.addAttribute("msg", "도서등록 중 문제가 발생하였습니다.\n관리자에게 문의하세요.");
+        return "/common/msg";
+      }
   }
 
   @GetMapping("/book/bookDetail")
