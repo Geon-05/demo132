@@ -83,7 +83,7 @@ public class BookController {
     }
 
     int res = service.deleteBook(bookNo);
-    
+
     if (res > 0) {
       model.addAttribute("msg", "삭제 되었습니다.");
       model.addAttribute("url", "/");
@@ -92,6 +92,17 @@ public class BookController {
     }
 
     return "/common/msg";
+  }
+
+  @GetMapping("/book/bookUpdate")
+  public String getMethodName(
+      BookDto book, Model model) {
+    BookDto selectBook = service.selectBookDetail(book);
+    model.addAttribute("book", selectBook);
+
+    List<UploadDto> imgFileList = uploadService.selectUploadList(selectBook.getImg_f_no());
+    model.addAttribute("imgFileList", imgFileList);
+    return "/book/update";
   }
 
 }
