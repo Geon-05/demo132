@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
@@ -33,7 +32,7 @@ public class BookController {
   UploadService uploadService;
 
   @GetMapping("/book/bookList")
-  public String getMethodName(
+  public String list(
       SearchDto searchDto, Model model) {
     Map<String, Object> map = service.selectBookList(searchDto);
     model.addAttribute("map", map);

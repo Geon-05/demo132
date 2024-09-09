@@ -13,4 +13,5 @@ public class BookDto {
   private String delyn;
   private String regdate;
   private int img_f_no;
+  private boolean isNew;
 }
