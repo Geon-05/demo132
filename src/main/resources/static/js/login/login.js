@@ -1,6 +1,7 @@
 window.addEventListener("load", function () {
   login();
   go_register();
+  id_save();
 });
 
 let login = function () {
@@ -29,4 +30,25 @@ let go_register = function(){
   btn_regist.addEventListener('click', function(){
     location.href='/login/loginRegister'
   })
+}
+
+let id_save = function(){
+  let idSave = getCookie('IdSave');
+  if (idSave!=null){
+    let id = document.querySelector('#input_id');
+    id.value = idSave;
+    let chkIdSave = document.querySelector('#chkIdSave');
+    chkIdSave.checked = true;
+  }
+}
+
+function getCookie(name) {
+  const cookies = document.cookie.split("; ");
+  for (let cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.split("=");
+    if (cookieName === name) {
+      return decodeURIComponent(cookieValue);
+    }
+  }
+  return null;
 }
